@@ -114,5 +114,21 @@ footer {
 }
     color: white;
 }
+/* Липкий хедер */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #4CAF50; /* цвет хедера */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
 
 
