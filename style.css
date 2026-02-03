@@ -201,5 +201,9 @@ footer .social img:hover {
     display: block;
     margin-bottom: 10px;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 
 
