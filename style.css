@@ -1,3 +1,4 @@
+/* Общие стили */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -7,6 +8,13 @@ body {
     color: #333;
 }
 
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
 header {
     background-color: #4CAF50;
     color: white;
@@ -20,6 +28,7 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -28,17 +37,70 @@ nav ul li a {
     font-weight: bold;
 }
 
-main {
-    padding: 20px;
-}
-
+/* Sections */
 section {
     margin-bottom: 40px;
+    text-align: center;
 }
 
+section img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Карточки услуг */
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex: 1 1 250px;
+    max-width: 300px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background-color: #333;
     color: white;
 }
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+}
+    background-color: #333;
+    color: white;
+}
+
