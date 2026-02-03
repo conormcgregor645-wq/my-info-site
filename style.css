@@ -167,3 +167,9 @@ footer .social img:hover {
         gap: 20px;
     }
 }
+.subtitle {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
