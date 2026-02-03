@@ -101,6 +101,18 @@ footer {
     }
 }
     background-color: #333;
+/* Анимация появления */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
     color: white;
 }
+
 
