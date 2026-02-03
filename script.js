@@ -1,6 +1,13 @@
-// Анимация появления при скролле
+// ======================================
+// 1️⃣ Анимация появления при скролле
+// ======================================
 const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+
+const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
+
 const appearOnScroll = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -11,14 +18,16 @@ const appearOnScroll = new IntersectionObserver(function(entries, observer) {
 
 faders.forEach(fader => appearOnScroll.observe(fader));
 
-// Подсветка активного раздела в меню
+// ======================================
+// 2️⃣ Подсветка активного раздела
+// ======================================
 const sections = document.querySelectorAll("section");
 const navLi = document.querySelectorAll("nav ul li a");
 
 window.addEventListener("scroll", () => {
     let current = "";
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 70;
+        const sectionTop = section.offsetTop - 70; // учитываем высоту хедера
         if (pageYOffset >= sectionTop) current = section.getAttribute("id");
     });
 
@@ -27,12 +36,15 @@ window.addEventListener("scroll", () => {
         if (a.getAttribute("href") === "#" + current) a.classList.add("active");
     });
 });
-// Плавная прокрутка при клике на меню
+
+// ======================================
+// 3️⃣ Плавная прокрутка при кликах на меню
+// ======================================
 const navLinks = document.querySelectorAll("nav ul li a");
 
 navLinks.forEach(link => {
     link.addEventListener("click", function(e) {
-        e.preventDefault(); // отменяем стандартное поведение
+        e.preventDefault(); // отменяем стандартный резкий переход
 
         const targetId = this.getAttribute("href").substring(1);
         const targetSection = document.getElementById(targetId);
@@ -47,4 +59,3 @@ navLinks.forEach(link => {
         });
     });
 });
-
