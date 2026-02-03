@@ -27,3 +27,24 @@ window.addEventListener("scroll", () => {
         if (a.getAttribute("href") === "#" + current) a.classList.add("active");
     });
 });
+// Плавная прокрутка при клике на меню
+const navLinks = document.querySelectorAll("nav ul li a");
+
+navLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault(); // отменяем стандартное поведение
+
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        const headerOffset = 70; // высота хедера
+        const elementPosition = targetSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    });
+});
+
