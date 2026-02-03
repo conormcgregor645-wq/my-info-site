@@ -1,4 +1,4 @@
-/* Общие стили */
+/* ===================== Общие стили ===================== */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     line-height: 1.6;
@@ -14,7 +14,7 @@ body {
     margin: 0 auto;
 }
 
-/* Липкий хедер */
+/* ===================== Хедер ===================== */
 header {
     position: sticky;
     top: 0;
@@ -45,12 +45,7 @@ nav ul li a.active {
     border-bottom: 2px solid white;
 }
 
-/* Плавная прокрутка */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Sections */
+/* ===================== Разделы ===================== */
 section {
     margin-bottom: 60px;
     text-align: center;
@@ -63,7 +58,7 @@ section img {
     border-radius: 10px;
 }
 
-/* Карточки услуг */
+/* ===================== Карточки ===================== */
 .cards {
     display: flex;
     gap: 20px;
@@ -87,7 +82,7 @@ section img {
     box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
-/* Кнопки */
+/* ===================== Кнопки ===================== */
 .btn {
     display: inline-block;
     margin-top: 10px;
@@ -104,15 +99,30 @@ section img {
     transform: scale(1.05);
 }
 
-/* Footer */
+/* ===================== Footer ===================== */
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 20px 0 40px 0;
     background-color: #333;
     color: white;
 }
 
-/* Анимация появления */
+footer .social a {
+    margin: 0 10px;
+}
+
+footer .social img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.2s;
+}
+
+footer .social img:hover {
+    transform: scale(1.2);
+}
+
+/* ===================== Анимация ===================== */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -124,7 +134,29 @@ footer {
     transform: translateY(0);
 }
 
-/* Адаптивность */
+/* ===================== Кнопка Наверх ===================== */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#scrollTopBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+/* ===================== Адаптивность ===================== */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
