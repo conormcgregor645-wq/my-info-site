@@ -122,6 +122,9 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+nav ul li a.active {
+    border-bottom: 2px solid white;
+}
 
 
 
