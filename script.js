@@ -80,4 +80,29 @@ fetch('news.json')
 scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('news.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Не удалось загрузить news.json');
+      return res.json();
+    })
+    .then(data => {
+      const newsList = document.querySelector('.news-list');
+      if (!newsList) return;
+
+      data.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'news-item';
+        el.innerHTML = `
+          <img src="${item.img}" alt="${item.title}">
+          <h3>${item.title}</h3>
+          <span class="date">${item.date}</span>
+          <p>${item.text}</p>
+          <a href="${item.link}" class="btn">Читать подробнее</a>
+        `;
+        newsList.appendChild(el);
+      });
+    })
+    .catch(err => console.error('Ошибка загрузки новостей:', err));
+});
 
