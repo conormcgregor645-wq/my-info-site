@@ -226,4 +226,18 @@ footer .social img {
     grid-template-columns: 1fr;
   }
 }
+.about {
+  max-width: 1000px;
+  margin: 0 auto;        /* центрирует блок по странице */
+  padding: 60px 20px;
+  text-align: center;   /* центрирует текст */
+}
+
+.about img {
+  display: block;
+  max-width: 100%;
+  margin: 30px auto 0;  /* центрирует картинку */
+  border-radius: 16px; /* красиво скруглим углы */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
 
