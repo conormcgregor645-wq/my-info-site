@@ -229,6 +229,18 @@ footer .social img {
 
     header nav ul {
         flex-direction: column;
+        /* Главная новость крупнее */
+.main-news {
+    grid-column: span 2; /* на больших экранах занимает 2 колонки */
+}
+
+@media (max-width: 900px) {
+    .main-news {
+        grid-column: span 1; /* на планшетах/телефонах – обычная ширина */
+    }
+}
+
         gap: 15px;
     }
 }
+
