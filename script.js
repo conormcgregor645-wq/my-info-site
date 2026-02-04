@@ -57,6 +57,27 @@ const scrollTopBtn = document.getElementById("scrollTopBtn");
 window.onscroll = function() {
     scrollTopBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
 };
+// Динамическая подгрузка новостей из JSON
+fetch('news.json')
+    .then(response => response.json())
+    .then(data => {
+        const newsList = document.querySelector('.news-list');
+        data.forEach(item => {
+            const newsItem = document.createElement('div');
+            newsItem.className = 'news-item';
+            newsItem.innerHTML = `
+                <img src="${item.img}" alt="${item.title}">
+                <h3>${item.title}</h3>
+                <span class="date">${item.date}</span>
+                <p>${item.text}</p>
+                <a href="${item.link}" class="btn">Читать подробнее</a>
+            `;
+            newsList.appendChild(newsItem);
+        });
+    })
+    .catch(error => console.error('Ошибка загрузки новостей:', error));
+
 scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
