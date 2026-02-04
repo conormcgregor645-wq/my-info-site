@@ -27,18 +27,18 @@ a {
 header {
     background-color: #1e1e1e;
     color: #fff;
-    padding: 40px 0;
+    padding: 50px 0 30px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 10px;
 }
 
 header .subtitle {
     font-size: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #ccc;
 }
 
@@ -46,18 +46,22 @@ header nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 header nav ul li a {
     color: #fff;
     font-weight: bold;
-    transition: color 0.3s;
+    padding: 5px 10px;
+    transition: color 0.3s, background 0.3s;
+    border-radius: 5px;
 }
 
 header nav ul li a:hover {
     color: #ff5722;
+    background-color: #333;
 }
 
 /* ===== Buttons ===== */
@@ -68,11 +72,13 @@ header nav ul li a:hover {
     color: #fff;
     border-radius: 5px;
     margin-top: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
 }
 
 .btn:hover {
     background-color: #e64a19;
+    transform: translateY(-2px);
 }
 
 /* ===== Sections ===== */
@@ -84,67 +90,80 @@ section h2 {
     text-align: center;
     margin-bottom: 40px;
     font-size: 1.8rem;
+    color: #222;
 }
 
-/* ===== Cards ===== */
+/* ===== Разделы новостей (карточки) ===== */
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background-color: #fff;
     padding: 20px;
-    width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .card h3 {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
 }
 
-/* ===== Latest News ===== */
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* ===== Новости (блок последних новостей) ===== */
 .news-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    align-items: center;
+    justify-items: center;
+    padding: 0;
 }
 
 .news-item {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .news-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .news-item h3 {
     margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #222;
 }
 
 .news-item .date {
-    font-size: 0.9rem;
-    color: #999;
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 10px;
 }
 
-/* ===== Images ===== */
+.news-item p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* ===== Изображения ===== */
 img {
     max-width: 100%;
     border-radius: 10px;
@@ -156,7 +175,7 @@ footer {
     background-color: #1e1e1e;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 0;
 }
 
 footer .social {
@@ -202,52 +221,14 @@ footer .social img {
     background-color: #e64a19;
 }
 
-/* ===== Responsive ===== */
+/* ===== Адаптив ===== */
 @media (max-width: 768px) {
-    .cards {
-        flex-direction: column;
-        align-items: center;
+    .cards, .news-list {
+        grid-template-columns: 1fr;
     }
-    /* ===== Новостная сетка ===== */
-.news-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-items: center;
-    margin-top: 20px;
-    padding: 0;
-}
 
-/* Увеличим отступы внутри элементов */
-.news-item {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    header nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
-
-.news-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-}
-
-/* Немного больше пространства для текста внутри */
-.news-item h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-.news-item .date {
-    font-size: 0.85rem;
-    color: #777;
-    margin-bottom: 10px;
-}
-.news-item p {
-    margin-bottom: 15px;
-}
-
-}
-
