@@ -99,5 +99,37 @@ async function loadNews() {
         console.error("Ошибка загрузки новостей:", e);
     }
 }
+async function loadMatches() {
+  try {
+    const response = await fetch("matches.json");
+    if (!response.ok) throw new Error("Не удалось загрузить matches.json");
+
+    const matches = await response.json();
+    const container = document.getElementById("matchesContainer");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    matches.forEach(match => {
+      const card = document.createElement("div");
+      card.className = "match-card";
+
+      card.innerHTML = `
+        <div class="match-teams">${match.team1} vs ${match.team2}</div>
+        <div class="match-tournament">${match.tournament}</div>
+        <div class="match-time">🕒 ${match.time}</div>
+        <div class="match-status">${match.status}</div>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (e) {
+    console.error("Ошибка загрузки матчей:", e);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadMatches);
 
 document.addEventListener("DOMContentLoaded", loadNews);
+
