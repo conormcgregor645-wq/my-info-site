@@ -224,3 +224,114 @@ footer {
   display: none;
   box-shadow: 0 10px 30px rgba(168,85,247,.45);
 }
+/* ===== УНИВЕРСАЛЬНЫЕ ВЫРАВНИВАНИЯ ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== ЦЕНТРИРОВАНИЕ КАРТОЧЕК НОВОСТЕЙ ===== */
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+/* ===== УНИФИЦИРОВАННЫЕ НОВОСТНЫЕ КАРТОЧКИ ===== */
+.news-item {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.news-item img {
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 180px;
+}
+
+.news-item h3 {
+  font-size: 18px;
+  margin: 14px 16px 6px;
+  color: #fff;
+}
+
+.news-item .date {
+  font-size: 13px;
+  opacity: 0.75;
+  margin: 0 16px 10px;
+  color: #ccc;
+}
+
+.news-item p {
+  font-size: 15px;
+  line-height: 1.45;
+  color: #ddd;
+  margin: 0 16px 16px;
+  flex-grow: 1;
+}
+
+/* ===== КНОПКА В НИЗУ КАРТОЧКИ ===== */
+.news-item .btn {
+  margin: 0 16px 16px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #4f8cff, #7b5cff);
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.news-item .btn:hover {
+  opacity: 0.95;
+}
+
+/* ===== СЕКЦИЯ ПОСЛЕДНИХ НОВОСТЕЙ ===== */
+#latest-news {
+  padding-top: 0;
+}
+
+#latest-news h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 28px;
+}
+
+/* ===== БЛОК “О САЙТЕ” ===== */
+#about {
+  text-align: center;
+}
+
+/* ===== ПАДДИНГИ ДЛЯ СЕКЦИЙ ===== */
+section {
+  padding: 60px 0;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 1024px) {
+  .news-list {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+}
+
