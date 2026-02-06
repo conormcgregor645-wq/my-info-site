@@ -54,84 +54,50 @@ navLinks.forEach(link => {
 // 4️⃣ Кнопка Наверх
 // ======================================
 const scrollTopBtn = document.getElementById("scrollTopBtn");
-window.onscroll = function() {
-    scrollTopBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
-};
-// Динамическая подгрузка новостей из JSON
-fetch('news.json')
-    .then(response => response.json())
-    .then(data => {
-        const newsList = document.querySelector('.news-list');
-        data.forEach(item => {
-            const newsItem = document.createElement('div');
-            newsItem.className = 'news-item';
-            newsItem.innerHTML = `
+window.addEventListener("scroll", () => {
+    scrollTopBtn.style.display =
+        (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300)
+            ? "block"
+            : "none";
+});
+
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// ======================================
+// 5️⃣ Загрузка новостей (ОДИН раз)
+// ======================================
+async function loadNews() {
+    try {
+        const response = await fetch("news.json");
+        if (!response.ok) throw new Error("Не удалось загрузить news.json");
+
+        const news = await response.json();
+        const container = document.getElementById("newsContainer");
+
+        if (!container) return;
+
+        container.innerHTML = ""; // очищаем перед отрисовкой
+
+        news.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "news-item";
+
+            card.innerHTML = `
                 <img src="${item.img}" alt="${item.title}">
                 <h3>${item.title}</h3>
                 <span class="date">${item.date}</span>
                 <p>${item.text}</p>
                 <a href="${item.link}" class="btn">Читать подробнее</a>
             `;
-            newsList.appendChild(newsItem);
+
+            container.appendChild(card);
         });
-    })
-    .catch(error => console.error('Ошибка загрузки новостей:', error));
 
-scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
-document.addEventListener('DOMContentLoaded', () => {
-  fetch('news.json')
-    .then(res => {
-      if (!res.ok) throw new Error('Не удалось загрузить news.json');
-      return res.json();
-    })
-    .then(data => {
-      const newsList = document.querySelector('.news-list');
-      if (!newsList) return;
-
-      data.forEach(item => {
-        const el = document.createElement('div');
-        el.className = 'news-item';
-        el.innerHTML = `
-          <img src="${item.img}" alt="${item.title}">
-          <h3>${item.title}</h3>
-          <span class="date">${item.date}</span>
-          <p>${item.text}</p>
-          <a href="${item.link}" class="btn">Читать подробнее</a>
-        `;
-        newsList.appendChild(el);
-      });
-    })
-    .catch(err => console.error('Ошибка загрузки новостей:', err));
-});
-async function loadNews() {
-  try {
-    const response = await fetch("news.json");
-    const news = await response.json();
-
-    const container = document.getElementById("newsContainer");
-    container.innerHTML = ""; // Очищаем перед отрисовкой
-
-    news.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "news-item";
-
-      card.innerHTML = `
-        <img src="${item.img}" alt="${item.title}">
-        <h3>${item.title}</h3>
-        <span class="date">${item.date}</span>
-        <p>${item.text}</p>
-        <a href="${item.link}" class="btn">Читать подробнее</a>
-      `;
-
-      container.appendChild(card);
-    });
-
-  } catch (e) {
-    console.error("Ошибка загрузки новостей:", e);
-  }
+    } catch (e) {
+        console.error("Ошибка загрузки новостей:", e);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", loadNews);
-
