@@ -1,0 +1,23 @@
+[
+  {
+    "team1": "NAVI",
+    "team2": "G2",
+    "tournament": "IEM Katowice 2026",
+    "time": "6 февраля 2026, 18:00",
+    "status": "Скоро"
+  },
+  {
+    "team1": "Team Spirit",
+    "team2": "FaZe",
+    "tournament": "BLAST Premier",
+    "time": "7 февраля 2026, 20:30",
+    "status": "Скоро"
+  },
+  {
+    "team1": "Vitality",
+    "team2": "MOUZ",
+    "tournament": "ESL Pro League",
+    "time": "8 февраля 2026, 17:00",
+    "status": "Скоро"
+  }
+]
