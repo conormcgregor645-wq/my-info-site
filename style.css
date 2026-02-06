@@ -237,3 +237,55 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/* ===== Матчи CS2 ===== */
+#matches {
+  margin: 80px 0;
+}
+
+.matches-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.match-card {
+  background: #111;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.match-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.match-teams {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.match-tournament {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.match-time {
+  font-size: 14px;
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+.match-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  background: #00ffcc;
+  color: #000;
+  font-weight: bold;
+}
+
