@@ -105,4 +105,33 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error('Ошибка загрузки новостей:', err));
 });
+async function loadNews() {
+  try {
+    const response = await fetch("news.json");
+    const news = await response.json();
+
+    const container = document.getElementById("newsContainer");
+    container.innerHTML = ""; // Очищаем перед отрисовкой
+
+    news.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "news-item";
+
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.title}">
+        <h3>${item.title}</h3>
+        <span class="date">${item.date}</span>
+        <p>${item.text}</p>
+        <a href="${item.link}" class="btn">Читать подробнее</a>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (e) {
+    console.error("Ошибка загрузки новостей:", e);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadNews);
 
